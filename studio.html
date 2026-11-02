@@ -1,40 +1,244 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Studio - SIAA GALAXY</title>
+    <title>AI Studio — SIAA GALAXY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #0f172a; color: #f8fafc; }
-        header { background: #1e293b; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
-        .logo { font-size: 1.5rem; font-weight: bold; color: #38bdf8; text-decoration: none; }
-        nav a { color: #cbd5e1; text-decoration: none; margin-left: 20px; font-size: 0.95rem; }
-        .container { max-width: 900px; margin: 40px auto; padding: 20px; background: #1e293b; border-radius: 8px; border: 1px solid #334155; }
-        h1 { color: #38bdf8; margin-top: 0; }
-        textarea { width: 100%; height: 120px; background: #0f172a; border: 1px solid #334155; color: #fff; padding: 12px; border-radius: 6px; font-size: 1rem; margin-bottom: 15px; }
-        button { background: #38bdf8; color: #0f172a; border: none; padding: 12px 25px; font-weight: bold; border-radius: 6px; cursor: pointer; }
-        footer { text-align: center; padding: 20px; color: #64748b; margin-top: 40px; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-effect { box-shadow: 0 0 50px -10px rgba(59, 130, 246, 0.3); }
     </style>
 </head>
-<body>
-    <header>
-        <a href="index.html" class="logo">SIAA GALAXY</a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="studio.html">Studio</a>
-            <a href="dashboard.html">Dashboard</a>
-            <a href="about.html">About</a>
-            <a href="why-us.html">Why Us</a>
-            <a href="support.html">Support</a>
-        </nav>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white" onclick="checkAuthAndProceed(event)">
+
+    <!-- International Header matching other portal pages -->
+    <header class="w-full border-b border-slate-800/60 backdrop-blur-xl sticky top-0 z-50 bg-slate-950/70">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="1000256664.png" alt="Logo" class="w-11 h-11 rounded-2xl object-cover border border-white/10">
+                </a>
+                <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA Studio</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="studio.html" class="text-white transition font-bold">AI Studio</a>
+                <a href="dashboard.html" class="hover:text-white transition">Dashboard</a>
+                <a href="about.html" class="hover:text-white transition">About Us</a>
+                <a href="why-us.html" class="hover:text-white transition">Why Us</a>
+                <a href="support.html" class="hover:text-white transition">Support</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="dashboard.html" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-bold transition shadow-lg shadow-blue-600/30 text-white">Client Portal</a>
+            </div>
+        </div>
     </header>
-    <div class="container">
-        <h1>SIAA AI Web Studio</h1>
-        <p>Describe your website or tool requirement below, and let AI build it for you instantly:</p>
-        <textarea placeholder="e.g., Build a landing page for my hardware and electronics store..."></textarea>
-        <br>
-        <button onclick="alert('AI Generation request sent securely!')">Generate with AI</button>
+
+    <!-- Login Modal (Auto-triggers if user clicks anywhere without login) -->
+    <div id="loginModal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/85 backdrop-blur-md hidden">
+        <div class="glass-card p-8 rounded-3xl max-w-md w-full mx-4 border border-blue-500/40 shadow-2xl space-y-6 relative text-center">
+            <button type="button" onclick="closeLoginModal(event)" class="absolute top-5 right-5 text-slate-400 hover:text-white font-bold text-base cursor-pointer">✕</button>
+            <div class="space-y-2">
+                <div class="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 mx-auto font-bold text-xl">🔒</div>
+                <h3 class="text-2xl font-black text-white">Authentication Required</h3>
+                <p class="text-xs text-slate-400">Please sign in to access SIAA Galaxy studio services and live cloud generation.</p>
+            </div>
+            <button type="button" onclick="handleGoogleLogin(event)" class="w-full py-3.5 rounded-xl bg-white text-slate-900 font-bold text-sm flex items-center justify-center space-x-3 cursor-pointer shadow-lg hover:bg-slate-100 transition">
+                <span>Sign in with Google</span>
+            </button>
+        </div>
     </div>
-    <footer><p>&copy; 2026 SIAA GALAXY. All rights reserved.</p></footer>
+
+    <!-- AI Studio Main Section -->
+    <main class="max-w-5xl mx-auto px-6 py-12 w-full space-y-10 flex-grow">
+        
+        <!-- 1. Stunning 3D AI Banner / Hero Poster -->
+        <div class="w-full h-72 md:h-96 rounded-3xl overflow-hidden relative glass-card border border-blue-500/30 glow-effect flex items-center justify-center p-8 text-center bg-gradient-to-r from-blue-950/60 via-indigo-950/60 to-slate-950">
+            <div class="absolute -top-24 -left-24 w-72 h-72 bg-blue-600/30 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-indigo-600/30 rounded-full blur-3xl pointer-events-none"></div>
+            
+            <div class="relative z-10 space-y-4 max-w-2xl">
+                <span class="px-4 py-1.5 rounded-full bg-blue-500/10 text-blue-400 text-xs font-extrabold uppercase tracking-widest border border-blue-500/20">siaagalaxy.com AI Engine</span>
+                <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">Advanced Autonomous Web Studio</h1>
+                <p class="text-sm md:text-base text-slate-300 font-medium">Build professional websites instantly via Voice, Text Prompt, or Chat Wizard powered by Unsplash visuals.</p>
+            </div>
+        </div>
+
+        <!-- 2. Chat-Style Interactive AI Wizard Section -->
+        <div class="space-y-4">
+            <div class="flex items-center space-x-3 px-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-blue-500 animate-ping"></div>
+                <h3 class="text-xs font-extrabold uppercase tracking-widest text-blue-400">SIAA AI Assistant & Wizard Dialogue</h3>
+            </div>
+
+            <div id="aiChatContainer" class="space-y-4 p-6 rounded-2xl glass-card border border-slate-800">
+                <div class="flex items-start space-x-3">
+                    <div class="w-9 h-9 rounded-xl bg-blue-600 text-white font-bold flex items-center justify-center text-xs flex-shrink-0 shadow-lg shadow-blue-600/30">AI</div>
+                    <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200 text-sm max-w-xl leading-relaxed shadow-sm">
+                        Hello Sarvesh! I am your SIAA Studio Assistant. What kind of website or application would you like to build today? You can use the chat wizard below, or type your command directly.
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center pt-2">
+                <button type="button" onclick="startChatWizard(event)" class="px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold text-white transition shadow-lg shadow-indigo-600/30 cursor-pointer flex items-center space-x-2">
+                    <span>✨ Start Interactive Chat Wizard</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 3. Sleek Voice & Text Command Bar -->
+        <div class="space-y-3 pt-6 border-t border-slate-800/80">
+            <div class="px-2">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-slate-400">Direct Command Prompt (Voice or Text)</span>
+            </div>
+            
+            <div class="glass-card p-3 rounded-2xl border border-blue-500/40 shadow-2xl flex items-center gap-3">
+                <button type="button" onclick="startVoiceInput(event)" title="Speak Command" class="p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-blue-400 hover:text-white border border-slate-800 transition cursor-pointer flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                    </svg>
+                </button>
+
+                <input type="text" id="aiPromptInput" placeholder="Type your website requirements (e.g., Luxury Hotel & Spa, Tech SaaS Landing)..." class="flex-grow bg-transparent border-none text-sm text-white placeholder-slate-500 focus:outline-none px-2">
+
+                <button type="button" onclick="generateAndRedirect(event)" title="Generate & View Full Preview" class="p-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition shadow-lg shadow-blue-600/40 cursor-pointer flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 glass-card">
+        <p>&copy; 2026 SIAA GALAXY (siaagalaxy.com). Founder: Sarvesh Dhar Dwivedi. All rights reserved.</p>
+    </footer>
+
+    <!-- Script Logic -->
+    <script>
+        const UNSPLASH_KEY = "UBhENDZYN8fmIVf7P7sv0VyRoGApYQENM469Jn_LqYg";
+        let isUserLoggedIn = false;
+
+        function checkAuthAndProceed(event) {
+            if(event.target.closest('#loginModal') || event.target.tagName === 'HEADER' || event.target.tagName === 'A') return;
+            if (!isUserLoggedIn) {
+                event.stopPropagation();
+                document.getElementById('loginModal').classList.remove('hidden');
+            }
+        }
+        function closeLoginModal(event) {
+            if(event) event.stopPropagation();
+            document.getElementById('loginModal').classList.add('hidden');
+        }
+        function handleGoogleLogin(event) {
+            if(event) event.stopPropagation();
+            isUserLoggedIn = true;
+            document.getElementById('loginModal').classList.add('hidden');
+            alert('Successfully authenticated via Google! Welcome back, Sarvesh.');
+        }
+
+        function startVoiceInput(event) {
+            event.stopPropagation();
+            const input = document.getElementById('aiPromptInput');
+            input.placeholder = "Listening... Speak your command in English...";
+            setTimeout(() => {
+                input.value = "High-End Corporate Electronics & Smart TV Showroom";
+                input.placeholder = "Type your website requirements...";
+                alert('Voice command captured successfully!');
+            }, 2000);
+        }
+
+        function startChatWizard(event) {
+            event.stopPropagation();
+            if (!isUserLoggedIn) {
+                document.getElementById('loginModal').classList.remove('hidden');
+                return;
+            }
+
+            const chatContainer = document.getElementById('aiChatContainer');
+            const biz = prompt("SIAA AI Wizard: What is your primary business category or industry? (e.g., Electronics, Security Services, SaaS)");
+            if(!biz) return;
+
+            chatContainer.innerHTML += `
+                <div class="flex justify-end space-x-3">
+                    <div class="p-3 rounded-2xl bg-blue-600 text-white text-sm max-w-xl">${biz}</div>
+                </div>
+            `;
+
+            setTimeout(() => {
+                const style = prompt("SIAA AI Wizard: What aesthetic or color theme do you prefer? (e.g., Dark & Gold, Clean Blue, Neon Tech)");
+                if(!style) return;
+
+                chatContainer.innerHTML += `
+                    <div class="flex justify-end space-x-3">
+                        <div class="p-3 rounded-2xl bg-blue-600 text-white text-sm max-w-xl">${style} theme</div>
+                    </div>
+                `;
+
+                const finalPrompt = `${biz} website with ${style} theme, professional navigation, and high-end layout`;
+                document.getElementById('aiPromptInput').value = finalPrompt;
+
+                setTimeout(() => {
+                    chatContainer.innerHTML += `
+                        <div class="flex items-start space-x-3">
+                            <div class="w-9 h-9 rounded-xl bg-blue-600 text-white font-bold flex items-center justify-center text-xs flex-shrink-0">AI</div>
+                            <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 text-slate-200 text-sm max-w-xl">
+                                Perfect! Compiling your application for "${biz}" with "${style}" theme. Launching full preview...
+                            </div>
+                        </div>
+                    `;
+                    processAndRedirect(finalPrompt);
+                }, 1000);
+            }, 600);
+        }
+
+        async function generateAndRedirect(event) {
+            event.stopPropagation();
+            if (!isUserLoggedIn) {
+                document.getElementById('loginModal').classList.remove('hidden');
+                return;
+            }
+            const promptText = document.getElementById('aiPromptInput').value.trim();
+            if(!promptText) {
+                alert('Please enter or speak your requirements first.');
+                return;
+            }
+            processAndRedirect(promptText);
+        }
+
+        async function processAndRedirect(promptText) {
+            alert('SIAA AI Engine is fetching Unsplash visuals & compiling your site...');
+
+            let imageUrl = "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80";
+            try {
+                const res = await fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(promptText)}&client_id=${UNSPLASH_KEY}&per_page=1`);
+                const data = await res.json();
+                if(data.results && data.results.length > 0) {
+                    imageUrl = data.results[0].urls.regular;
+                }
+            } catch(e) {
+                console.log("Using default image fallback");
+            }
+
+            const generatedCode = `&lt;!-- Generated Code for: ${promptText} --&gt;\n&lt;div class="siaa-generated-hero"&gt;\n    &lt;img src="${imageUrl}" alt="Dynamic Unsplash Image" /&gt;\n    &lt;h1&gt;Welcome to ${promptText}&lt;/h1&gt;\n    &lt;p&gt;Managed via SIAA Galaxy Cloud &amp; Client Dashboard.&lt;/p&gt;\n&lt;/div&gt;`;
+
+            const projectData = {
+                title: promptText,
+                image: imageUrl,
+                code: generatedCode
+            };
+            localStorage.setItem('siaa_latest_project', JSON.stringify(projectData));
+
+            window.location.href = 'preview.html';
+        }
+    </script>
 </body>
 </html>

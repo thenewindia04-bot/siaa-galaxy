@@ -21,16 +21,47 @@
                 </a>
                 <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA Portal</span>
             </div>
-            <div class="flex items-center space-x-4">
-                <a href="studio.html" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-bold transition shadow-lg shadow-blue-600/30">+ Create New Site</a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="studio.html" class="hover:text-white transition">AI Studio</a>
+                <a href="dashboard.html" class="text-white transition font-bold">Dashboard</a>
+                <a href="about.html" class="hover:text-white transition">About Us</a>
+                <a href="why-us.html" class="hover:text-white transition">Why Us</a>
+                <a href="support.html" class="hover:text-white transition">Support</a>
+            </nav>
+
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="studio.html" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-bold transition shadow-lg shadow-blue-600/30 text-white">+ Create New Site</a>
                 <a href="settings.html" class="px-4 py-2.5 rounded-xl glass-card text-sm font-bold hover:bg-slate-900 transition">Settings</a>
                 <img src="1000039979.png" alt="Sarvesh" class="w-10 h-10 rounded-xl object-cover border border-blue-500/30">
+            </div>
+
+            <!-- Mobile Three-Dot & Menu Trigger -->
+            <div class="md:hidden flex items-center space-x-3">
+                <button type="button" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl glass-card text-blue-400 hover:text-white focus:outline-none text-xl font-bold cursor-pointer border border-blue-500/30">
+                    ⋮
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-slate-800 px-6 py-4 space-y-3 bg-slate-950/95">
+            <a href="index.html" class="block text-sm font-semibold text-slate-300 py-1">Home</a>
+            <a href="studio.html" class="block text-sm font-semibold text-slate-300 py-1">AI Studio</a>
+            <a href="dashboard.html" class="block text-sm font-semibold text-white py-1 font-bold">Dashboard</a>
+            <a href="about.html" class="block text-sm font-semibold text-slate-300 py-1">About Us</a>
+            <a href="why-us.html" class="block text-sm font-semibold text-slate-300 py-1">Why Us</a>
+            <a href="support.html" class="block text-sm font-semibold text-slate-300 py-1">Support</a>
+            <div class="pt-2 border-t border-slate-800 space-y-2">
+                <a href="studio.html" class="block w-full py-2.5 text-center rounded-xl bg-blue-600 text-white text-xs font-bold">+ Create New Site</a>
+                <a href="settings.html" class="block w-full py-2.5 text-center rounded-xl glass-card text-slate-200 text-xs font-bold">Settings</a>
             </div>
         </div>
     </header>
 
     <main class="flex-grow max-w-7xl mx-auto px-6 py-10 w-full space-y-8">
-        
         <div class="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-blue-500/20">
             <div>
                 <span class="text-xs font-extrabold text-blue-400 uppercase tracking-widest">siaagalaxy.com Node Manager</span>
@@ -59,31 +90,6 @@
             </div>
             <div id="domainResult" class="text-xs text-slate-300"></div>
         </div>
-
-        <div class="space-y-6">
-            <h2 class="text-xl font-bold text-white tracking-tight">SIAA Hosting & Subscription Plans</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass-card rounded-2xl p-6 space-y-4 border border-slate-800">
-                    <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs font-bold rounded-full">Starter AI Node</span>
-                    <h3 class="text-3xl font-black text-white">₹499 <span class="text-xs font-normal text-slate-400">/month</span></h3>
-                    <p class="text-xs text-slate-400">Ideal for personal static portfolios and basic AI generation.</p>
-                    <button onclick="alert('Redirecting to secure Razorpay gateway...')" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition">Activate Plan</button>
-                </div>
-                <div class="glass-card rounded-2xl p-6 space-y-4 border border-blue-500/50 relative shadow-xl shadow-blue-500/10">
-                    <span class="absolute -top-3 right-6 px-3 py-0.5 bg-blue-600 text-white text-[10px] font-extrabold rounded-full uppercase">Most Popular</span>
-                    <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full">Professional Empire</span>
-                    <h3 class="text-3xl font-black text-white">₹1,499 <span class="text-xs font-normal text-slate-400">/month</span></h3>
-                    <p class="text-xs text-slate-400">Custom domain, Groq AI unlimited engine, and NVMe high speed.</p>
-                    <button onclick="alert('Redirecting to secure Razorpay gateway...')" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold transition text-white">Activate Plan</button>
-                </div>
-                <div class="glass-card rounded-2xl p-6 space-y-4 border border-slate-800">
-                    <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full">Enterprise VIP</span>
-                    <h3 class="text-3xl font-black text-white">₹3,999 <span class="text-xs font-normal text-slate-400">/month</span></h3>
-                    <p class="text-xs text-slate-400">Dedicated cloud resources, priority support and 99.99% uptime guarantee.</p>
-                    <button onclick="alert('Redirecting to secure Razorpay gateway...')" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition">Activate Plan</button>
-                </div>
-            </div>
-        </div>
     </main>
 
     <footer class="w-full border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 glass-card">
@@ -91,14 +97,15 @@
     </footer>
 
     <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            if (menu) menu.classList.toggle('hidden');
+        }
         function checkDomainAvailability() {
             const domain = document.getElementById('domainSearchInput').value;
             const res = document.getElementById('domainResult');
-            if(!domain) {
-                alert('Please enter a domain name to search.');
-                return;
-            }
-            res.innerHTML = `<span class="text-green-400 font-bold">✔ Great news! "${domain}" is available via siaagalaxy.com. Price: ₹799/year. <button onclick="alert('Redirecting to secure payment checkout.')" class="ml-2 px-3 py-1 bg-blue-600 text-white rounded-lg text-xs">Buy Now</button></span>`;
+            if(!domain) { alert('Please enter a domain name to search.'); return; }
+            res.innerHTML = `<span class="text-green-400 font-bold">✔ Great news! "${domain}" is available via siaagalaxy.com. Price: ₹799/year.</span>`;
         }
     </script>
 </body>
