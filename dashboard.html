@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Portal — SIAA GALAXY</title>
+    <title>Client Portal & Dashboard — SIAA GALAXY</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
@@ -19,93 +19,112 @@
                 <a href="index.html" class="flex items-center space-x-3">
                     <img src="1000256664.png" alt="Logo" class="w-11 h-11 rounded-2xl object-cover border border-white/10">
                 </a>
-                <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA Portal</span>
+                <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA Dashboard</span>
             </div>
-
-            <!-- Desktop Nav Links -->
+            
             <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-400">
                 <a href="index.html" class="hover:text-white transition">Home</a>
                 <a href="studio.html" class="hover:text-white transition">AI Studio</a>
                 <a href="dashboard.html" class="text-white transition font-bold">Dashboard</a>
-                <a href="about.html" class="hover:text-white transition">About Us</a>
-                <a href="why-us.html" class="hover:text-white transition">Why Us</a>
-                <a href="support.html" class="hover:text-white transition">Support</a>
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
-                <a href="studio.html" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-bold transition shadow-lg shadow-blue-600/30 text-white">+ Create New Site</a>
-                <a href="settings.html" class="px-4 py-2.5 rounded-xl glass-card text-sm font-bold hover:bg-slate-900 transition">Settings</a>
-                <img src="1000039979.png" alt="Sarvesh" class="w-10 h-10 rounded-xl object-cover border border-blue-500/30">
-            </div>
-
-            <!-- Mobile Three-Dot & Menu Trigger -->
-            <div class="md:hidden flex items-center space-x-3">
-                <button type="button" onclick="toggleMobileMenu()" class="p-2.5 rounded-xl glass-card text-blue-400 hover:text-white focus:outline-none text-xl font-bold cursor-pointer border border-blue-500/30">
-                    ⋮
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Dropdown Menu -->
-        <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-slate-800 px-6 py-4 space-y-3 bg-slate-950/95">
-            <a href="index.html" class="block text-sm font-semibold text-slate-300 py-1">Home</a>
-            <a href="studio.html" class="block text-sm font-semibold text-slate-300 py-1">AI Studio</a>
-            <a href="dashboard.html" class="block text-sm font-semibold text-white py-1 font-bold">Dashboard</a>
-            <a href="about.html" class="block text-sm font-semibold text-slate-300 py-1">About Us</a>
-            <a href="why-us.html" class="block text-sm font-semibold text-slate-300 py-1">Why Us</a>
-            <a href="support.html" class="block text-sm font-semibold text-slate-300 py-1">Support</a>
-            <div class="pt-2 border-t border-slate-800 space-y-2">
-                <a href="studio.html" class="block w-full py-2.5 text-center rounded-xl bg-blue-600 text-white text-xs font-bold">+ Create New Site</a>
-                <a href="settings.html" class="block w-full py-2.5 text-center rounded-xl glass-card text-slate-200 text-xs font-bold">Settings</a>
+                <a href="studio.html" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-bold text-white transition shadow-md">＋ New Project</a>
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-7xl mx-auto px-6 py-10 w-full space-y-8">
-        <div class="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-blue-500/20">
-            <div>
-                <span class="text-xs font-extrabold text-blue-400 uppercase tracking-widest">siaagalaxy.com Node Manager</span>
-                <h1 class="text-3xl font-black text-white mt-1">Welcome, Sarvesh Dhar Dwivedi</h1>
-                <p class="text-sm text-slate-400 mt-1">Chattarpur, South Delhi | info@siaaindia.com</p>
+    <main class="flex-grow max-w-6xl mx-auto px-6 py-12 w-full space-y-10">
+        <!-- Welcome Banner with Fixed Green Tag Alignment -->
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 shadow-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+            <div class="space-y-3">
+                <div class="inline-block px-3.5 py-1.5 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-[10px] md:text-xs font-extrabold uppercase tracking-wider">
+                    Active Tier: Professional Partner
+                </div>
+                <h1 id="welcomeUserTitle" class="text-2xl md:text-3xl font-black text-white">Welcome back!</h1>
+                <p class="text-xs text-slate-400">Manage your autonomous web builds, custom domains, and Google Sheets integrations from your portal.</p>
             </div>
-            <div class="flex items-center gap-6 bg-slate-950/80 border border-slate-800/80 rounded-xl px-6 py-4">
-                <div>
-                    <span class="text-xs text-slate-500 block">Master Domain</span>
-                    <span class="text-sm font-bold text-green-400">siaagalaxy.com</span>
-                </div>
-                <div class="h-8 w-px bg-slate-800"></div>
-                <div>
-                    <span class="text-xs text-slate-500 block">Google Sheets Sync</span>
-                    <span class="text-sm font-bold text-blue-400">Active</span>
-                </div>
+            <div class="flex items-center gap-3 w-full md:w-auto">
+                <button onclick="changeUserName()" class="flex-1 md:flex-initial px-4 py-3 rounded-xl glass-card text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer text-center">⚙️ Edit Name</button>
+                <a href="studio.html" class="flex-1 md:flex-initial px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 font-bold text-xs text-white transition shadow-lg shadow-blue-600/30 text-center">
+                    ✨ Launch Studio
+                </a>
             </div>
         </div>
 
-        <div class="glass-card rounded-2xl p-6 space-y-4 border border-blue-500/30">
-            <h3 class="text-lg font-bold text-white">🌐 Domain Registration (Zero-Inventory Reseller via siaagalaxy.com)</h3>
-            <p class="text-xs text-slate-400">Search and book custom domains (.com, .in, .net) directly through your platform API.</p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <input type="text" id="domainSearchInput" placeholder="Type your domain name (e.g. mybrand.com)..." class="flex-grow bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition">
-                <button onclick="checkDomainAvailability()" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white transition shadow-lg shadow-blue-600/30 cursor-pointer">Search & Book</button>
+        <!-- Custom Domain Binding Module -->
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 shadow-2xl space-y-6">
+            <div class="space-y-1">
+                <h2 class="text-lg font-extrabold text-white">🌐 Custom Domain Binding</h2>
+                <p class="text-xs text-slate-400">Connect your custom domain name to your SIAA Galaxy live projects.</p>
             </div>
-            <div id="domainResult" class="text-xs text-slate-300"></div>
+            <div class="flex flex-col md:flex-row gap-4">
+                <input type="text" id="customDomainInput" placeholder="Enter your domain (e.g., mybusiness.com)" class="flex-grow bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500">
+                <button onclick="bindCustomDomain()" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs cursor-pointer shadow-md transition">Bind Domain</button>
+            </div>
+            <div id="domainStatusMsg" class="text-xs text-emerald-400 hidden">✓ Domain configuration initiated. CNAME records generated successfully.</div>
+        </div>
+
+        <!-- Active Projects List with Fixed Header Wrapping -->
+        <div class="glass-card rounded-3xl p-8 border border-slate-800 shadow-2xl space-y-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-2">
+                <h2 class="text-lg font-extrabold text-white">Recent Generated Projects</h2>
+                <span class="text-xs text-slate-400 bg-slate-900 px-3 py-1 rounded-lg border border-slate-800">Custom Branded & Synced</span>
+            </div>
+            <div class="space-y-4">
+                <div class="bg-slate-900 border border-slate-800 p-5 rounded-2xl flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div class="space-y-1">
+                        <div id="dashProjectTitle" class="text-sm font-bold text-white">SIAA Enterprise Portal</div>
+                        <div class="text-xs text-slate-400">Status: <span class="text-emerald-400 font-bold">Ready for Live Deployment</span></div>
+                    </div>
+                    <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+                        <a href="preview.html" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-white transition text-center">View Preview</a>
+                        <a href="preview.html" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-xs font-bold text-white transition text-center">Deploy Live</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <footer class="w-full border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 glass-card">
-        <p>&copy; 2026 SIAA GALAXY Portal (siaagalaxy.com). Secured Infrastructure.</p>
+        <p>&copy; 2026 SIAA GALAXY (siaagalaxy.com). Founder: Sarvesh Dhar Dwivedi. All rights reserved.</p>
     </footer>
 
     <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            if (menu) menu.classList.toggle('hidden');
+        window.addEventListener('DOMContentLoaded', () => {
+            let loggedInUser = localStorage.getItem('siaa_logged_in_user');
+            if (!loggedInUser) {
+                loggedInUser = "Sarvesh Dhar Dwivedi";
+                localStorage.setItem('siaa_logged_in_user', loggedInUser);
+            }
+            document.getElementById('welcomeUserTitle').innerText = `Welcome back, ${loggedInUser}!`;
+
+            const savedProject = localStorage.getItem('siaa_latest_project');
+            if (savedProject) {
+                try {
+                    const data = JSON.parse(savedProject);
+                    if (data.title) {
+                        document.getElementById('dashProjectTitle').innerText = data.title;
+                    }
+                } catch(e) {}
+            }
+        });
+
+        function changeUserName() {
+            const newName = prompt("Enter logged-in user name (e.g., Vinay, Sarvesh):");
+            if (newName && newName.trim() !== "") {
+                localStorage.setItem('siaa_logged_in_user', newName.trim());
+                document.getElementById('welcomeUserTitle').innerText = `Welcome back, ${newName.trim()}!`;
+                alert(`Dashboard updated for ${newName.trim()}!`);
+            }
         }
-        function checkDomainAvailability() {
-            const domain = document.getElementById('domainSearchInput').value;
-            const res = document.getElementById('domainResult');
-            if(!domain) { alert('Please enter a domain name to search.'); return; }
-            res.innerHTML = `<span class="text-green-400 font-bold">✔ Great news! "${domain}" is available via siaagalaxy.com. Price: ₹799/year.</span>`;
+
+        function bindCustomDomain() {
+            const domainVal = document.getElementById('customDomainInput').value.trim();
+            if(!domainVal) { alert('Please enter a valid domain name.'); return; }
+            const statusMsg = document.getElementById('domainStatusMsg');
+            statusMsg.innerText = `✓ Domain "${domainVal}" successfully bound to your SIAA deployment server!`;
+            statusMsg.classList.remove('hidden');
         }
     </script>
 </body>
