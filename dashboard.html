@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal — SIAA GALAXY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+    <header class="w-full border-b border-slate-800/60 backdrop-blur-xl sticky top-0 z-50 bg-slate-950/70">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <a href="index.html" class="flex items-center space-x-3">
+                    <img src="1000256664.png" alt="Logo" class="w-11 h-11 rounded-2xl object-cover border border-white/10">
+                </a>
+                <span class="text-2xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA Portal</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="studio.html" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-sm font-bold transition shadow-lg shadow-blue-600/30">+ Create New Site</a>
+                <a href="settings.html" class="px-4 py-2.5 rounded-xl glass-card text-sm font-bold hover:bg-slate-900 transition">Settings</a>
+                <img src="1000039979.png" alt="Sarvesh" class="w-10 h-10 rounded-xl object-cover border border-blue-500/30">
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-10 w-full space-y-8">
+        
+        <div class="glass-card rounded-2xl p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 border border-blue-500/20">
+            <div>
+                <span class="text-xs font-extrabold text-blue-400 uppercase tracking-widest">siaagalaxy.com Node Manager</span>
+                <h1 class="text-3xl font-black text-white mt-1">Welcome, Sarvesh Dhar Dwivedi</h1>
+                <p class="text-sm text-slate-400 mt-1">Chattarpur, South Delhi | info@siaaindia.com</p>
+            </div>
+            <div class="flex items-center gap-6 bg-slate-950/80 border border-slate-800/80 rounded-xl px-6 py-4">
+                <div>
+                    <span class="text-xs text-slate-500 block">Master Domain</span>
+                    <span class="text-sm font-bold text-green-400">siaagalaxy.com</span>
+                </div>
+                <div class="h-8 w-px bg-slate-800"></div>
+                <div>
+                    <span class="text-xs text-slate-500 block">Google Sheets Sync</span>
+                    <span class="text-sm font-bold text-blue-400">Active</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-6 space-y-4 border border-blue-500/30">
+            <h3 class="text-lg font-bold text-white">🌐 Domain Registration (Zero-Inventory Reseller via siaagalaxy.com)</h3>
+            <p class="text-xs text-slate-400">Search and book custom domains (.com, .in, .net) directly through your platform API.</p>
+            <div class="flex flex-col sm:flex-row gap-4">
+                <input type="text" id="domainSearchInput" placeholder="Type your domain name (e.g. mybrand.com)..." class="flex-grow bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-blue-500 transition">
+                <button onclick="checkDomainAvailability()" class="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold text-xs text-white transition shadow-lg shadow-blue-600/30 cursor-pointer">Search & Book</button>
+            </div>
+            <div id="domainResult" class="text-xs text-slate-300"></div>
+        </div>
+
+        <div class="space-y-6">
+            <h2 class="text-xl font-bold text-white tracking-tight">SIAA Hosting & Subscription Plans</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-6 space-y-4 border border-slate-800">
+                    <span class="px-3 py-1 bg-slate-800 text-slate-300 text-xs font-bold rounded-full">Starter AI Node</span>
+                    <h3 class="text-3xl font-black text-white">₹499 <span class="text-xs font-normal text-slate-400">/month</span></h3>
+                    <p class="text-xs text-slate-400">Ideal for personal static portfolios and basic AI generation.</p>
+                    <button onclick="alert('Redirecting to secure Razorpay gateway...')" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition">Activate Plan</button>
+                </div>
+                <div class="glass-card rounded-2xl p-6 space-y-4 border border-blue-500/50 relative shadow-xl shadow-blue-500/10">
+                    <span class="absolute -top-3 right-6 px-3 py-0.5 bg-blue-600 text-white text-[10px] font-extrabold rounded-full uppercase">Most Popular</span>
+                    <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs font-bold rounded-full">Professional Empire</span>
+                    <h3 class="text-3xl font-black text-white">₹1,499 <span class="text-xs font-normal text-slate-400">/month</span></h3>
+                    <p class="text-xs text-slate-400">Custom domain, Groq AI unlimited engine, and NVMe high speed.</p>
+                    <button onclick="alert('Redirecting to secure Razorpay gateway...')" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold transition text-white">Activate Plan</button>
+                </div>
+                <div class="glass-card rounded-2xl p-6 space-y-4 border border-slate-800">
+                    <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs font-bold rounded-full">Enterprise VIP</span>
+                    <h3 class="text-3xl font-black text-white">₹3,999 <span class="text-xs font-normal text-slate-400">/month</span></h3>
+                    <p class="text-xs text-slate-400">Dedicated cloud resources, priority support and 99.99% uptime guarantee.</p>
+                    <button onclick="alert('Redirecting to secure Razorpay gateway...')" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-xs font-bold transition">Activate Plan</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 glass-card">
+        <p>&copy; 2026 SIAA GALAXY Portal (siaagalaxy.com). Secured Infrastructure.</p>
+    </footer>
+
+    <script>
+        function checkDomainAvailability() {
+            const domain = document.getElementById('domainSearchInput').value;
+            const res = document.getElementById('domainResult');
+            if(!domain) {
+                alert('Please enter a domain name to search.');
+                return;
+            }
+            res.innerHTML = `<span class="text-green-400 font-bold">✔ Great news! "${domain}" is available via siaagalaxy.com. Price: ₹799/year. <button onclick="alert('Redirecting to secure payment checkout.')" class="ml-2 px-3 py-1 bg-blue-600 text-white rounded-lg text-xs">Buy Now</button></span>`;
+        }
+    </script>
+</body>
+</html>
