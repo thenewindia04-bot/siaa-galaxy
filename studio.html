@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Studio — SIAA GALAXY</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
@@ -14,15 +14,29 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
-        .glass-card { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glow-effect { box-shadow: 0 0 60px -10px rgba(147, 51, 234, 0.3); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card { background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        
+        /* SIAA Professional Custom Modal Overlay */
+        #siaaCustomModal {
+            position: fixed; inset: 0; background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(8px);
+            display: flex; align-items: center; justify-content: center; z-index: 99999;
+            opacity: 0; pointer-events: none; transition: all 0.3s ease;
+        }
+        #siaaCustomModal.active { opacity: 1; pointer-events: auto; }
+        .siaa-modal-box {
+            background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(59, 130, 246, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(59, 130, 246, 0.2);
+            border-radius: 1.5rem; padding: 2rem; max-width: 380px; width: 90%; text-align: center;
+            transform: scale(0.9); transition: transform 0.3s ease;
+        }
+        #siaaCustomModal.active .siaa-modal-box { transform: scale(1); }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-purple-600 selection:text-white">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
 
     <!-- Header -->
-    <header class="w-full border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-2xl sticky top-0 z-50 px-6 py-4">
+    <header class="w-full border-b border-slate-800/60 backdrop-blur-xl sticky top-0 z-50 bg-slate-950/70">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
                 <a href="index.html" class="flex items-center space-x-3">
@@ -34,7 +48,7 @@
             <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-400">
                 <a href="index.html" class="hover:text-white transition">Home</a>
                 <a href="studio.html" class="text-white transition font-bold">AI Studio</a>
-                <a href="dashboard.html" class="text-emerald-400 hover:text-white transition">Dashboard 📊</a>
+                <a href="dashboard.html" class="hover:text-white transition">Dashboard</a>
             </nav>
         </div>
     </header>
@@ -42,24 +56,24 @@
     <!-- Main Studio Section -->
     <main class="flex-grow max-w-4xl mx-auto px-6 py-12 w-full space-y-8">
         <div class="text-center space-y-2">
-            <span class="px-4 py-1.5 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-400 text-xs font-bold inline-block">11 Autonomous Engines Active</span>
+            <div class="inline-block px-4 py-1 rounded-full bg-purple-950/60 border border-purple-500/30 text-purple-400 text-[10px] font-extrabold tracking-widest uppercase mb-2">11 Autonomous Engines Active</div>
             <h1 class="text-3xl md:text-4xl font-black text-white tracking-tight">Advanced Autonomous Web Studio</h1>
             <p class="text-xs text-slate-400">Conversational AI wizard & direct command prompt with personalized user greetings and voice assistant.</p>
         </div>
 
-        <!-- 1. Custom Brand Logo, Owner & Google Sheets Setup -->
+        <!-- Custom Logo, Owner & Google Sheets Setup (ORIGINAL RESTORED) -->
         <div class="glass-card rounded-3xl p-6 md:p-8 space-y-4 border border-slate-800 shadow-2xl">
-            <div class="text-xs font-bold uppercase tracking-widest text-blue-400">1. Custom Brand Logo, Owner & Google Sheets Setup</div>
+            <div class="text-xs font-bold uppercase tracking-widest text-blue-400">1. CUSTOM BRAND LOGO, OWNER & GOOGLE SHEETS SETUP</div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
                 <div>
                     <label class="block text-xs text-slate-300 mb-2">Upload Brand Logo (PNG/JPG)</label>
-                    <input type="file" id="logoUploadInput" accept="image/*" class="w-full text-xs text-slate-400 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer bg-slate-900 border border-slate-800 p-1">
+                    <input type="file" id="logoUploadInput" accept="image/*" class="w-full text-xs text-slate-400 file:mr-2 file:py-2 file:px-3 file:rounded-xl file:border-0 file:text-[11px] file:font-bold file:bg-blue-600 file:text-white hover:file:bg-blue-500 cursor-pointer">
                 </div>
                 <div>
                     <label class="block text-xs text-slate-300 mb-2">Owner Photo & Name (Optional)</label>
-                    <div class="flex space-x-2">
-                        <input type="file" id="ownerPhotoUploadInput" accept="image/*" class="w-1/2 text-xs text-slate-400 file:py-2 file:px-2 file:rounded-xl file:border-0 file:text-[10px] file:font-bold file:bg-purple-600 file:text-white cursor-pointer bg-slate-900 border border-slate-800 p-1" title="Owner Photo">
-                        <input type="text" id="ownerNameInput" placeholder="Owner Name" class="w-1/2 bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500">
+                    <div class="flex items-center space-x-2">
+                        <input type="file" id="ownerPhotoInput" accept="image/*" class="w-1/2 text-xs text-slate-400 file:mr-2 file:py-2 file:px-2 file:rounded-xl file:border-0 file:text-[10px] file:font-bold file:bg-purple-600 file:text-white cursor-pointer">
+                        <input type="text" id="ownerNameInput" placeholder="Owner Name" class="w-1/2 bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500">
                     </div>
                 </div>
                 <div>
@@ -69,28 +83,44 @@
             </div>
         </div>
 
-        <!-- Industry-Specific Ready Templates Quick Picker -->
+        <!-- 100+ INDUSTRY-SPECIFIC READY TEMPLATES -->
         <div class="glass-card rounded-3xl p-6 md:p-8 space-y-4 border border-slate-800 shadow-2xl">
-            <div class="text-xs font-bold uppercase tracking-widest text-emerald-400">⚡ 100+ Industry-Specific Ready Templates</div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <button onclick="loadTemplatePreset('Electronics Repair & Mobile IC Lab')" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500 text-left text-xs font-bold text-white transition cursor-pointer">
-                    📱 Mobile & TV Repair Lab
-                </button>
-                <button onclick="loadTemplatePreset('Security Guard & Labour Agency')" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500 text-left text-xs font-bold text-white transition cursor-pointer">
-                    🛡️ Security & Labour Agency
-                </button>
-                <button onclick="loadTemplatePreset('Insurance & Financial Advisor')" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500 text-left text-xs font-bold text-white transition cursor-pointer">
-                    🛡️ Insurance & New India Agency
-                </button>
-                <button onclick="loadTemplatePreset('Wholesale Spices & Dry Fruits')" class="p-3 rounded-xl bg-slate-900 border border-slate-800 hover:border-emerald-500 text-left text-xs font-bold text-white transition cursor-pointer">
-                    🥜 Dry Fruits & Spices Store
-                </button>
+            <div class="text-xs font-bold uppercase tracking-widest text-amber-400">⚡ 100+ INDUSTRY-SPECIFIC READY TEMPLATES</div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div onclick="selectReadyTemplate('Mobile & TV Repair Lab')" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 cursor-pointer transition flex items-center space-x-3">
+                    <span class="text-xl">📱</span>
+                    <div>
+                        <div class="text-xs font-bold text-white">Mobile & TV Repair Lab</div>
+                        <div class="text-[10px] text-slate-400">Instant setup for repair technicians</div>
+                    </div>
+                </div>
+                <div onclick="selectReadyTemplate('Security & Labour Agency')" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 cursor-pointer transition flex items-center space-x-3">
+                    <span class="text-xl">🛡️</span>
+                    <div>
+                        <div class="text-xs font-bold text-white">Security & Labour Agency</div>
+                        <div class="text-[10px] text-slate-400">For SIAA security & contract services</div>
+                    </div>
+                </div>
+                <div onclick="selectReadyTemplate('Insurance & New India Agency')" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 cursor-pointer transition flex items-center space-x-3">
+                    <span class="text-xl">🛡️</span>
+                    <div>
+                        <div class="text-xs font-bold text-white">Insurance & New India Agency</div>
+                        <div class="text-[10px] text-slate-400">Health, life & motor insurance portal</div>
+                    </div>
+                </div>
+                <div onclick="selectReadyTemplate('Dry Fruits & Spices Store')" class="p-4 rounded-2xl bg-slate-900 border border-slate-800 hover:border-blue-500/50 cursor-pointer transition flex items-center space-x-3">
+                    <span class="text-xl">🌰</span>
+                    <div>
+                        <div class="text-xs font-bold text-white">Dry Fruits & Spices Store</div>
+                        <div class="text-[10px] text-slate-400">Wholesale superfood distribution</div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 2. SIAA Conversational AI Assistant & Wizard Dialogue -->
+        <!-- Conversational AI Assistant & Wizard Dialogue with Personalized Greeting -->
         <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 border border-slate-800 shadow-2xl">
-            <div class="text-xs font-bold uppercase tracking-widest text-blue-400">2. SIAA Conversational AI Wizard</div>
+            <div class="text-xs font-bold uppercase tracking-widest text-blue-400">2. SIAA CONVERSATIONAL AI WIZARD</div>
             
             <div id="studioChatLog" class="space-y-4 max-h-72 overflow-y-auto pr-2">
                 <div class="flex items-start space-x-3">
@@ -101,12 +131,19 @@
                 </div>
             </div>
 
+            <!-- Wizard Input Area with Mic Button -->
             <div id="wizardInputContainer" class="hidden space-y-3 pt-2 border-t border-slate-800">
                 <div id="wizardPromptLabel" class="text-xs font-bold text-slate-300">Please respond below:</div>
                 <div class="flex items-center space-x-2 bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5">
                     <input type="text" id="wizardReplyInput" placeholder="Type or speak your answer..." class="w-full bg-transparent text-sm text-white focus:outline-none py-1.5" onkeypress="if(event.key === 'Enter') handleWizardStep()">
-                    <button type="button" onclick="startWizardVoiceRecognition()" id="wizardMicBtn" class="p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-400 hover:text-white transition cursor-pointer text-sm" title="Speak Answer">🎙️</button>
-                    <button type="button" onclick="handleWizardStep()" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs cursor-pointer shadow-md">Send</button>
+                    
+                    <button type="button" onclick="startWizardVoiceRecognition()" id="wizardMicBtn" class="p-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-blue-400 hover:text-white transition cursor-pointer text-sm" title="Speak Answer">
+                        🎙️
+                    </button>
+
+                    <button type="button" onclick="handleWizardStep()" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs cursor-pointer shadow-md">
+                        Send
+                    </button>
                 </div>
             </div>
 
@@ -116,87 +153,73 @@
                 </button>
             </div>
         </div>
-
-        <!-- 3. Direct Command Prompt -->
-        <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 border border-slate-800 shadow-2xl glow-effect">
-            <div class="text-xs font-bold uppercase tracking-widest text-purple-400">3. Direct Mahā Brahmāstra Command Prompt</div>
+        <!-- Direct Command Prompt with Strict Validator & Voice Assistant -->
+        <div class="glass-card rounded-3xl p-6 md:p-8 space-y-6 border border-slate-800 shadow-2xl">
+            <div class="text-xs font-bold uppercase tracking-widest text-slate-400">3. DIRECT MAHĀ BRAHMĀSTRA COMMAND PROMPT</div>
             
             <div id="promptFeedbackLog" class="space-y-3 bg-slate-900/60 border border-slate-800/80 p-4 rounded-2xl max-h-48 overflow-y-auto">
                 <div class="flex items-start space-x-3">
-                    <div class="w-7 h-7 rounded-lg bg-purple-600/20 border border-purple-500/30 flex items-center justify-center text-purple-400 font-bold text-[10px]">AI</div>
-                    <div class="text-xs text-slate-300">Enter a valid business requirement (e.g., "Electronics Repair Shop"). The 11 autonomous engines are ready.</div>
-                </div>
-            </div>
-
-            <div id="liveProgressBarContainer" class="hidden space-y-2 pt-2">
-                <div class="flex justify-between text-xs font-bold">
-                    <span id="progressStatusText" class="text-purple-400">Initializing 11 Engines...</span>
-                    <span id="progressPercentText" class="text-white font-mono">0%</span>
-                </div>
-                <div class="w-full h-2.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                    <div id="progressBarFill" class="h-full bg-gradient-to-r from-purple-600 to-blue-500 transition-all duration-300" style="width: 0%;"></div>
+                    <div class="w-7 h-7 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-[10px]">AI</div>
+                    <div class="text-xs text-slate-300">
+                        Enter a valid business requirement (e.g., "Electronics Repair Shop"). The 11 autonomous engines are ready.
+                    </div>
                 </div>
             </div>
 
             <div class="flex items-center space-x-3 bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3">
                 <input type="text" id="directPromptInput" placeholder="e.g., Build an electronics repair and sales portal..." class="w-full bg-transparent text-sm text-white focus:outline-none" onkeypress="if(event.key === 'Enter') submitDirectPrompt()">
-                <button type="button" onclick="startDirectVoiceRecognition()" id="directMicBtn" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-400 hover:text-white transition shadow-md cursor-pointer flex items-center justify-center text-base" title="Speak Command">🎙️</button>
-                <button type="button" onclick="submitDirectPrompt()" class="p-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition shadow-md cursor-pointer flex items-center justify-center text-base" title="Submit">➔</button>
+                
+                <button type="button" onclick="startDirectVoiceRecognition()" id="directMicBtn" class="p-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-blue-400 hover:text-white transition shadow-md cursor-pointer flex items-center justify-center text-base" title="Speak Command">
+                    🎙️
+                </button>
+
+                <button type="button" onclick="submitDirectPrompt()" class="p-3 rounded-xl bg-purple-600 hover:bg-purple-500 text-white transition shadow-md cursor-pointer flex items-center justify-center text-base" title="Submit">
+                    ➔
+                </button>
             </div>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer class="w-full border-t border-slate-800/60 py-6 text-center text-xs text-slate-500 glass-card">
         <p>&copy; 2026 SIAA GALAXY (siaagalaxy.com). Founder: Sarvesh Dhar Dwivedi. All rights reserved.</p>
     </footer>
+
+    <!-- Professional Custom Modal HTML -->
+    <div id="siaaCustomModal">
+        <div class="siaa-modal-box space-y-4">
+            <div id="siaaModalIcon" class="w-12 h-12 rounded-2xl bg-blue-600/20 border border-blue-500/40 text-blue-400 flex items-center justify-center text-xl mx-auto">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="space-y-1">
+                <h3 id="siaaModalTitle" class="text-base font-black text-white">SIAA GALAXY Notice</h3>
+                <p id="siaaModalMessage" class="text-xs text-slate-300 leading-relaxed">Please enter a requirement.</p>
+            </div>
+            <button onclick="closeSiaaModal()" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs transition shadow-lg shadow-blue-600/30 cursor-pointer">
+                OK, Understood
+            </button>
+        </div>
+    </div>
+
     <script>
-        // SIAA Strict VIP Galaxy AI Generation Master Prompt
-        const SIAA_STRICT_VIP_GALAXY_SYSTEM_PROMPT = `
-        You are the Master Architect Engine of SIAA GALAXY (siaagalaxy.com), founded by Sarvesh Dhar Dwivedi. 
-        Generate a breathtaking, ultra-luxury 5-page Single Page Application (SPA) using Tailwind CSS based on the user's prompt.
-
-        STRICT RULES:
-        1. DESIGN: Stunning Dark Glassmorphism theme (slate-950 background, glowing gradients in purple/blue, high-end borders).
-        2. STRUCTURE: Seamless 5-section SPA (Home, Services, Portfolio, About Us, Contact Us).
-        3. SMART LOGO: If no logo is provided, auto-generate a sleek glowing badge logo matching the business name.
-        4. OWNER & CREDIBILITY: Seamlessly embed founder/owner branding (Sarvesh Dhar Dwivedi) and professional trust badges.
-        5. OUTPUT: Return ONLY raw valid HTML starting with <!DOCTYPE html> and ending with </html> without markdown wrappers.
-        `;
-
-        // Just-in-Time Login & Paywall Guard
-        function checkUserSessionAndToken() {
-            const isLoggedIn = localStorage.getItem('siaa_google_logged_in');
-            const founderBypass = true; // फाउंडर सर्वेश के लिए हमेशा फ्री
-
-            if (founderBypass) return true;
-
-            if (!isLoggedIn) {
-                const email = prompt("🔒 कृपया अपनी Google ID से लॉगिन करें (Email दर्ज करें):");
-                if (email) {
-                    localStorage.setItem('siaa_google_logged_in', email);
-                    alert("✅ लॉगिन सफल! आपका 1-फ्री टोकन एक्टिव है।");
-                    return true;
-                } else {
-                    alert("❌ वेबसाइट जनरेट करने के लिए लॉगिन अनिवार्य है!");
-                    return false;
-                }
-            }
-            return true;
+        // Professional Custom Popup Function
+        function showSiaaPopup(message, title = "SIAA GALAXY Notice", type = "warning") {
+            const modal = document.getElementById('siaaCustomModal');
+            const msgEl = document.getElementById('siaaModalMessage');
+            const titleEl = document.getElementById('siaaModalTitle');
+            
+            if(msgEl) msgEl.innerText = message;
+            if(titleEl) titleEl.innerText = title;
+            if(modal) modal.classList.add('active');
         }
 
-        function loadTemplatePreset(presetName) {
-            const directInput = document.getElementById('directPromptInput');
-            if(directInput) {
-                directInput.value = `Build a high-end luxury enterprise 5-page portal for ${presetName} with complete modern features, contact forms, and pricing tables.`;
-                alert(`✨ टेम्पलेट [ ${presetName} ] लोड हो गया है! अब बस 'Submit' बटन दबाएं।`);
-            }
+        function closeSiaaModal() {
+            const modal = document.getElementById('siaaCustomModal');
+            if(modal) modal.classList.remove('active');
         }
 
-        // --- PART 1: Core Engines (1 to 6) ---
-        const GROQ_MODEL_DEFAULT = "openai/gpt-oss-120b";
-        
+        // Runtime Key Vault (Secure 10-Key Rotation)
         function getRuntimeGroqApiKey() {
-            // 1 से 10 तक के रोटेशन वाल्ट से एक्टिव की चेक करेगा (सुरक्षित और गिटहब सेफ)
             for (let i = 1; i <= 10; i++) {
                 let k = localStorage.getItem(`siaa_key_${i}`);
                 if (k && k.startsWith('gsk_')) return k.trim();
@@ -204,134 +227,7 @@
             return localStorage.getItem('siaa_live_secure_groq_key') || "";
         }
 
-        function getRuntimeGroqModel() {
-            for (let i = 1; i <= 10; i++) {
-                let m = localStorage.getItem(`siaa_model_${i}`);
-                if (m && m.trim() !== "") return m.trim();
-            }
-            return localStorage.getItem('siaa_live_secure_groq_model') || GROQ_MODEL_DEFAULT;
-        }
-
-        function getUnsplashApiKey() {
-            return localStorage.getItem('siaa_unsplash_key') || "UBhENDZYN8fmIVf7P7sv0VyRoGApYQENM469Jn_LqYg";
-        }
-
-        function analyzeSemanticIntent(rawText) {
-            const text = rawText.toLowerCase();
-            let inferredCategory = "General Enterprise Portal";
-            if (text.includes("repair") || text.includes("electronics") || text.includes("mobile") || text.includes("tv")) inferredCategory = "Electronics Repair & Tech Store";
-            else if (text.includes("security") || text.includes("guard") || text.includes("labour")) inferredCategory = "Security & Manpower Services";
-            else if (text.includes("insurance") || text.includes("policy")) inferredCategory = "Insurance Agency & Financial Services";
-            else if (text.includes("hospital") || text.includes("clinic")) inferredCategory = "Healthcare & Medical Clinic";
-            return { raw: rawText, category: inferredCategory, isCommercial: true };
-        }
-
-        function resolveDesignTokens(styleInput) {
-            const style = (styleInput || "").toLowerCase();
-            if (style.includes("gold") || style.includes("luxury")) {
-                return { primary: "amber-500", bg: "slate-950", card: "bg-slate-900/80 border-amber-500/30", text: "text-amber-400" };
-            } else if (style.includes("cyberpunk") || style.includes("neon")) {
-                return { primary: "fuchsia-500", bg: "zinc-950", card: "bg-zinc-900/90 border-cyan-500/50", text: "text-cyan-400" };
-            } else {
-                return { primary: "blue-500", bg: "slate-950", card: "bg-slate-900/80 border-slate-800", text: "text-blue-400" };
-            }
-        }
-
-        async function fetchRelevantImages(industryQuery) {
-            const unsplashKey = getUnsplashApiKey();
-            const queries = [industryQuery + " storefront", industryQuery + " interior", industryQuery + " product", industryQuery + " professional team", industryQuery + " workspace", industryQuery + " equipment", industryQuery + " tools", industryQuery + " display", industryQuery + " components", industryQuery + " core business"];
-            let imageUrls = [];
-            for (let q of queries) {
-                try {
-                    const res = await fetch(`https://api.unsplash.com/photos/random?query=${encodeURIComponent(q)}&client_id=${unsplashKey}`);
-                    const data = await res.json();
-                    imageUrls.push(data?.urls?.regular || "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop");
-                } catch(e) {
-                    imageUrls.push("https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop");
-                }
-            }
-            return imageUrls;
-        }
-
-        function injectAutomatedSEO(htmlContent, title, category) {
-            const seoTags = `\n    <meta name="description" content="Official portal for ${title}. Specialized in ${category}.">\n    <meta property="og:title" content="${title}">\n`;
-            return htmlContent.includes('</head>') ? htmlContent.replace('</head>', seoTags + '</head>') : htmlContent;
-        }
-
-        function injectVisualEditorScript(htmlContent) {
-            const editorScript = `\n    <script>\n        let isVis = false;\n        function toggleVisualEditor() {\n            isVis = !isVis;\n            document.querySelectorAll('h1, h2, h3, p, span, a, button').forEach(el => {\n                el.setAttribute('contenteditable', isVis ? 'true' : 'false');\n                el.style.outline = isVis ? '1px dashed #3b82f6' : 'none';\n            });\n            alert(isVis ? "Visual Editor ENABLED! Click any text to edit." : "Visual Editor DISABLED & Saved.");\n            if(!isVis) localStorage.setItem('siaa_generated_website_html', document.documentElement.outerHTML);\n        }\n    <\/script>\n`;
-            return htmlContent.includes('</body>') ? htmlContent.replace('</body>', editorScript + '</body>') : htmlContent;
-        }
-
-        function downloadWebsiteZip() {
-            const htmlContent = localStorage.getItem('siaa_generated_website_html');
-            if (!htmlContent) { alert("No website found!"); return; }
-            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = 'index.html';
-            document.body.appendChild(a); a.click(); document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            alert("Website package downloaded successfully!");
-        }
-
-        function selfHealHTMLCode(htmlCode) {
-            let healed = htmlCode;
-            if (!healed.trim().startsWith('<!DOCTYPE html>')) {
-                healed = '<!DOCTYPE html>\n' + healed;
-            }
-            if (!healed.includes('tailwindcss.com')) {
-                healed = healed.replace('<head>', '<head>\n<script src="https://cdn.tailwindcss.com">');
-            }
-            return healed;
-        }
-
-        function updateProgress(percent, text) {
-            const container = document.getElementById('liveProgressBarContainer');
-            if (container) container.classList.remove('hidden');
-            const fill = document.getElementById('progressBarFill');
-            if (fill) fill.style.width = percent + '%';
-            const status = document.getElementById('progressStatusText');
-            if (status) status.innerText = text;
-            const perc = document.getElementById('progressPercentText');
-            if (perc) perc.innerText = percent + '%';
-        }
-
-        async function verifyAndExecuteGeneration(promptText, businessTitle, businessCategory) {
-            const apiKey = getRuntimeGroqApiKey();
-            const modelId = getRuntimeGroqModel();
-
-            if (!apiKey || !apiKey.startsWith('gsk_')) {
-                alert("⚠️ Groq API Key नहीं मिली! कृपया पहले Secret Dashboard में की सेव करें।");
-                return;
-            }
-
-            updateProgress(30, `Connecting to AI Model [${modelId}]...`);
-            let response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-                method: 'POST',
-                headers: { 'Authorization': `Bearer ` + apiKey, 'Content-Type': 'application/json' },
-                body: JSON.stringify({ model: modelId, messages: [{ role: 'user', content: promptText }], temperature: 0.7 })
-            });
-            let data = await response.json();
-            if (!response.ok) throw new Error(data?.error?.message || "API Connection Failed.");
-
-            updateProgress(75, "Applying Self-Healing & Visual Editor Scripts...");
-            let htmlCode = data.choices[0].message.content.replace(/```html/g, '').replace(/```/g, '').trim();
-            
-            htmlCode = selfHealHTMLCode(htmlCode);
-            htmlCode = injectAutomatedSEO(htmlCode, businessTitle, businessCategory);
-            htmlCode = injectVisualEditorScript(htmlCode);
-
-            updateProgress(95, "Preparing Live Preview...");
-            localStorage.setItem('siaa_generated_website_html', htmlCode);
-            const iframe = document.getElementById('sandboxIframe');
-            if (iframe) iframe.srcdoc = htmlCode;
-            
-            updateProgress(100, "Mahā Brahmāstra Generation Complete!");
-            setTimeout(() => { window.location.href = 'preview.html'; }, 1500);
-        }
-
-        // ==================== WIZARD & OWNER INTERACTION LOGIC ====================
+        const UNSPLASH_ACCESS_KEY = "UBhENDZYN8fmIVf7P7sv0VyRoGApYQENM469Jn_LqYg";
         let wizardStep = 0;
         let wizardData = { businessName: "", industry: "", style: "" };
 
@@ -341,29 +237,124 @@
                 loggedInUser = "Sarvesh Dhar Dwivedi";
                 localStorage.setItem('siaa_logged_in_user', loggedInUser);
             }
-            const welcomeEl = document.getElementById('studioWelcomeMsg');
-            if (welcomeEl) {
-                welcomeEl.innerText = `Hello ${loggedInUser}! Welcome to SIAA Studio. Click below to start the step-by-step business wizard.`;
-            }
+            document.getElementById('studioWelcomeMsg').innerText = `Hello ${loggedInUser}! Welcome to SIAA Studio. Click below to start the step-by-step business wizard.`;
         });
 
+        function selectReadyTemplate(templateName) {
+            document.getElementById('directPromptInput').value = templateName;
+            submitDirectPrompt();
+        }
+
+        function isValidBusinessPrompt(text) {
+            const cleanText = text.toLowerCase().trim();
+            const invalidWords = ["hi", "hello", "hey", "gm", "gn", "test", "testing", "ok", "yes", "no", "weather", "chai", "khane", "movie", "song", "kaise ho", "kya haal"];
+            if (invalidWords.includes(cleanText) || cleanText.length < 4) {
+                return false;
+            }
+
+            const businessKeywords = [
+                "shop", "store", "portal", "agency", "service", "company", "business", "repair", 
+                "electronics", "security", "insurance", "hardware", "software", "hospital", "clinic", 
+                "restaurant", "hotel", "blog", "portfolio", "ecommerce", "market", "enterprise", "solutions",
+                "दकान", "सर्विस", "कंपनी", "स्टोर", "पोर्टल", "एजेंसी", "रिपेयर", "इलेक्ट्रॉनिक्स"
+            ];
+            return businessKeywords.some(keyword => cleanText.includes(keyword));
+        }
+
+        async function fetchUnsplashImage(query) {
+            try {
+                const response = await fetch(`https://api.unsplash.com/photos/random?query=${encodeURIComponent(query)}&client_id=${UNSPLASH_ACCESS_KEY}`);
+                const data = await response.json();
+                if (data && data.urls && data.urls.regular) {
+                    return data.urls.regular;
+                }
+            } catch (e) {}
+            return "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop";
+        }
+
+        function getUploadedLogo(callback) {
+            const fileInput = document.getElementById('logoUploadInput');
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) { callback(e.target.result); };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                callback("1000256664.png");
+            }
+        }
+
+        function getOwnerDetails(callback) {
+            const ownerInput = document.getElementById('ownerPhotoInput');
+            const nameInput = document.getElementById('ownerNameInput');
+            const ownerName = nameInput && nameInput.value.trim() ? nameInput.value.trim() : "Sarvesh Dhar Dwivedi";
+
+            if (ownerInput && ownerInput.files && ownerInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) { callback(e.target.result, ownerName); };
+                reader.readAsDataURL(ownerInput.files[0]);
+            } else {
+                callback("1000256664.png", ownerName);
+            }
+        }
+
+        function startDirectVoiceRecognition() {
+            const inputField = document.getElementById('directPromptInput');
+            const micBtn = document.getElementById('directMicBtn');
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                const spoken = prompt("Voice Assistant: Speak your business requirement:");
+                if (spoken) { inputField.value = spoken; submitDirectPrompt(); }
+                return;
+            }
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'hi-IN';
+            recognition.start();
+            micBtn.classList.add('bg-red-600', 'text-white', 'animate-pulse');
+            appendFeedbackMessage("AI", "🎙️ Listening... Speak your business command.");
+
+            recognition.onresult = function(event) {
+                inputField.value = event.results[0][0].transcript;
+                micBtn.classList.remove('bg-red-600', 'text-white', 'animate-pulse');
+                submitDirectPrompt();
+            };
+            recognition.onerror = function() { micBtn.classList.remove('bg-red-600', 'text-white', 'animate-pulse'); };
+            recognition.onend = function() { micBtn.classList.remove('bg-red-600', 'text-white', 'animate-pulse'); };
+        }
+
+        function startWizardVoiceRecognition() {
+            const inputField = document.getElementById('wizardReplyInput');
+            const micBtn = document.getElementById('wizardMicBtn');
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                const spoken = prompt("Wizard Voice: Speak your answer:");
+                if (spoken) { inputField.value = spoken; handleWizardStep(); }
+                return;
+            }
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'hi-IN';
+            recognition.start();
+            micBtn.classList.add('bg-red-600', 'text-white', 'animate-pulse');
+
+            recognition.onresult = function(event) {
+                inputField.value = event.results[0][0].transcript;
+                micBtn.classList.remove('bg-red-600', 'text-white', 'animate-pulse');
+                handleWizardStep();
+            };
+            recognition.onerror = function() { micBtn.classList.remove('bg-red-600', 'text-white', 'animate-pulse'); };
+            recognition.onend = function() { micBtn.classList.remove('bg-red-600', 'text-white', 'animate-pulse'); };
+        }
+
         function startConversationalWizard() {
-            const btnContainer = document.getElementById('wizardBtnContainer');
-            const inputContainer = document.getElementById('wizardInputContainer');
-            if (btnContainer) btnContainer.classList.add('hidden');
-            if (inputContainer) inputContainer.classList.remove('hidden');
-            
+            document.getElementById('wizardBtnContainer').classList.add('hidden');
+            document.getElementById('wizardInputContainer').classList.remove('hidden');
             wizardStep = 1;
             const loggedInUser = localStorage.getItem('siaa_logged_in_user') || "Sarvesh";
             appendWizardChatMessage("AI", `Great ${loggedInUser}! Let's build your website step by step. First, what is the name of your business or company?`);
-            
-            const replyInput = document.getElementById('wizardReplyInput');
-            if (replyInput) replyInput.focus();
+            document.getElementById('wizardReplyInput').focus();
         }
 
         function appendWizardChatMessage(sender, text) {
             const log = document.getElementById('studioChatLog');
-            if (!log) return;
             if (sender === "You") {
                 log.innerHTML += `<div class="flex items-end justify-end space-x-3"><div class="bg-blue-600 text-white p-3.5 rounded-2xl max-w-lg text-xs md:text-sm shadow-md">${text}</div><div class="w-8 h-8 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-300 font-bold text-xs">You</div></div>`;
             } else {
@@ -374,9 +365,8 @@
 
         async function handleWizardStep() {
             const inputField = document.getElementById('wizardReplyInput');
-            if (!inputField) return;
             const val = inputField.value.trim();
-            if (!val) { alert('Please enter a response.'); return; }
+            if (!val) { showSiaaPopup('Please enter a response.'); return; }
 
             appendWizardChatMessage("You", val);
             inputField.value = '';
@@ -386,105 +376,97 @@
                 wizardStep = 2;
                 appendWizardChatMessage("AI", `Awesome, "${val}". Now, what is your primary business category or industry? (e.g., Electronics Store, Security Services)`);
             } else if (wizardStep === 2) {
+                if (!isValidBusinessPrompt(val)) {
+                    appendWizardChatMessage("AI", `⚠️ "${val}" does not look like a valid business category. Please enter a proper industry (e.g., Electronics Repair, Security Agency).`);
+                    return;
+                }
                 wizardData.industry = val;
                 wizardStep = 3;
-                appendWizardChatMessage("AI", `Got it (${val}). What color theme or style do you prefer? (e.g., Dark Modern, Gold Luxury)`);
+                appendWizardChatMessage("AI", `Got it (${val}). What color theme or style do you prefer? (e.g., Dark Modern, Corporate Blue)`);
             } else if (wizardStep === 3) {
                 wizardData.style = val;
-                appendWizardChatMessage("AI", "Fantastic! Engaging 11 Mahā Brahmāstra engines to build your website...");
+                appendWizardChatMessage("AI", "Fantastic! Generating your professional website...");
                 
-                const ownerName = document.getElementById('ownerNameInput')?.value.trim() || "Founder & Managing Director";
-                const logoInput = document.getElementById('logoUploadInput');
-                const ownerPhotoInput = document.getElementById('ownerPhotoUploadInput');
-                const sheetUrlInput = document.getElementById('googleSheetUrlInput');
-                const sheetUrl = sheetUrlInput ? sheetUrlInput.value.trim() : "";
+                getUploadedLogo(async function(logoUrl) {
+                    getOwnerDetails(async function(ownerPhotoUrl, ownerName) {
+                        const imageUrl = await fetchUnsplashImage(wizardData.industry);
+                        const sheetUrl = document.getElementById('googleSheetUrlInput').value.trim();
 
-                let logoUrl = "1000256664.png";
-                let ownerUrl = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop";
+                        const projectData = {
+                            title: `${wizardData.businessName} (${wizardData.industry})`,
+                            image: imageUrl,
+                            logo: logoUrl,
+                            ownerPhoto: ownerPhotoUrl,
+                            ownerName: ownerName,
+                            sheetUrl: sheetUrl,
+                            style: wizardData.style
+                        };
+                        localStorage.setItem('siaa_latest_project', JSON.stringify(projectData));
 
-                if (logoInput?.files?.[0]) {
-                    const r1 = new FileReader();
-                    r1.onload = e1 => {
-                        logoUrl = e1.target.result;
-                        processOwnerAndGenerate(wizardData.businessName, wizardData.industry, logoUrl, ownerName, ownerPhotoInput, sheetUrl);
-                    };
-                    r1.readAsDataURL(logoInput.files[0]);
-                } else {
-                    processOwnerAndGenerate(wizardData.businessName, wizardData.industry, logoUrl, ownerName, ownerPhotoInput, sheetUrl);
-                }
+                        emailjs.send('service_91707fg', 'template_rz0n8kw', {
+                            to_name: "Sarvesh Dhar Dwivedi",
+                            project_name: projectData.title,
+                            message: "New website generated via Conversational Wizard!"
+                        });
+
+                        setTimeout(() => { window.location.href = 'preview.html'; }, 1200);
+                    });
+                });
             }
         }
 
-        function processOwnerAndGenerate(bizName, industry, logoUrl, ownerName, ownerPhotoInput, sheetUrl) {
-            if (ownerPhotoInput?.files?.[0]) {
-                const r2 = new FileReader();
-                r2.onload = async e2 => {
-                    let ownerUrl = e2.target.result;
-                    await executeWizardFinalGeneration(bizName, industry, logoUrl, ownerName, ownerUrl, sheetUrl);
-                };
-                r2.readAsDataURL(ownerPhotoInput.files[0]);
+        function appendFeedbackMessage(sender, text, isError = false) {
+            const log = document.getElementById('promptFeedbackLog');
+            const textColor = isError ? "text-amber-400" : "text-slate-300";
+            if (sender === "You") {
+                log.innerHTML += `<div class="flex items-end justify-end space-x-2"><div class="bg-blue-600 text-white p-3 rounded-xl max-w-md text-xs">${text}</div><div class="w-6 h-6 rounded-lg bg-slate-800 flex items-center justify-center text-slate-300 font-bold text-[10px]">You</div></div>`;
             } else {
-                executeWizardFinalGeneration(bizName, industry, logoUrl, ownerName, "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop", sheetUrl);
+                log.innerHTML += `<div class="flex items-start space-x-2"><div class="w-6 h-6 rounded-lg bg-blue-600/20 border border-blue-500/30 flex items-center justify-center text-blue-400 font-bold text-[10px]">AI</div><div class="bg-slate-900 border border-slate-800 p-3 rounded-xl max-w-md text-xs ${textColor}">${text}</div></div>`;
             }
-        }
-
-        async function executeWizardFinalGeneration(bizName, industry, logoUrl, ownerName, ownerUrl, sheetUrl) {
-            updateProgress(10, "Engaging 11 Mahā Brahmāstra Master Engines...");
-            const imgs = await fetchRelevantImages(bizName + " " + industry);
-            const promptContent = `Create a responsive 5-page SPA business web app using Tailwind for "${bizName}" (${industry}). Owner Name: "${ownerName}", Owner Photo: "${ownerUrl}". Logo: "${logoUrl}". Images: 1.${imgs[0]} 2.${imgs[1]} 3.${imgs[2]}. Return ONLY raw valid HTML starting with <!DOCTYPE html>.`;
-            try {
-                await verifyAndExecuteGeneration(promptContent, bizName, industry);
-            } catch(err) { alert("Error: " + err.message); }
+            log.scrollTop = log.scrollHeight;
         }
 
         async function submitDirectPrompt() {
             const inputField = document.getElementById('directPromptInput');
-            if (!inputField) return;
             const val = inputField.value.trim();
-            if (!val) { alert('Please enter a requirement.'); return; }
+            if (!val) { showSiaaPopup('Please enter a requirement.'); return; }
+
+            appendFeedbackMessage("You", val);
             inputField.value = '';
-            
-            updateProgress(10, "Engaging 11 Mahā Brahmāstra Master Engines...");
-            const intent = analyzeSemanticIntent(val);
-            const ownerName = document.getElementById('ownerNameInput')?.value.trim() || "Founder & Managing Director";
-            const logoInput = document.getElementById('logoUploadInput');
-            const ownerPhotoInput = document.getElementById('ownerPhotoUploadInput');
-            const sheetUrlInput = document.getElementById('googleSheetUrlInput');
 
-            let logoUrl = "1000256664.png";
-            if (logoInput?.files?.[0]) {
-                const r1 = new FileReader();
-                r1.onload = e1 => {
-                    logoUrl = e1.target.result;
-                    processDirectOwnerAndGen(val, intent, logoUrl, ownerName, ownerPhotoInput);
-                };
-                r1.readAsDataURL(logoInput.files[0]);
-            } else {
-                processDirectOwnerAndGen(val, intent, logoUrl, ownerName, ownerPhotoInput);
+            if (!isValidBusinessPrompt(val)) {
+                appendFeedbackMessage("AI", `⚠️ Invalid Prompt: "${val}". SIAA Studio only accepts website and business-related descriptions (e.g., "Electronics Store", "Security Agency").`, true);
+                return;
             }
-        }
 
-        function processDirectOwnerAndGen(val, intent, logoUrl, ownerName, ownerPhotoInput) {
-            if (ownerPhotoInput?.files?.[0]) {
-                const r2 = new FileReader();
-                r2.onload = async e2 => {
-                    let ownerUrl = e2.target.result;
-                    await executeDirectFinalGeneration(val, intent, logoUrl, ownerName, ownerUrl);
-                };
-                r2.readAsDataURL(ownerPhotoInput.files[0]);
-            } else {
-                executeDirectFinalGeneration(val, intent, logoUrl, ownerName, "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=600&auto=format&fit=crop");
-            }
-        }
+            appendFeedbackMessage("AI", `✓ Valid business prompt verified! Building "${val}"...`);
 
-        async function executeDirectFinalGeneration(val, intent, logoUrl, ownerName, ownerUrl) {
-            const imgs = await fetchRelevantImages(val);
-            const promptContent = `Create a responsive 5-page SPA business web app using Tailwind for "${val}". Category: "${intent.category}". Owner Name: "${ownerName}", Owner Photo: "${ownerUrl}". Logo: "${logoUrl}". Images: 1.${imgs[0]} 2.${imgs[1]} 3.${imgs[2]}. Return ONLY raw valid HTML starting with <!DOCTYPE html>.`;
-            try {
-                await verifyAndExecuteGeneration(promptContent, val, intent.category);
-            } catch(err) { alert("Error: " + err.message); }
-        }
+            getUploadedLogo(async function(logoUrl) {
+                getOwnerDetails(async function(ownerPhotoUrl, ownerName) {
+                    const imageUrl = await fetchUnsplashImage(val);
+                    const sheetUrl = document.getElementById('googleSheetUrlInput').value.trim();
+                    const projectData = {
+                        title: val + " - SIAA Enterprise",
+                        image: imageUrl,
+                        logo: logoUrl,
+                        ownerPhoto: ownerPhotoUrl,
+                        ownerName: ownerName,
+                        sheetUrl: sheetUrl
+                    };
+                    localStorage.setItem('siaa_latest_project', JSON.stringify(projectData));
 
-        function startDirectVoiceRecognition() {
-            const inputField = document.getElementById('directPromptInput');
-            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                    emailjs.send('service_91707fg', 'template_rz0n8kw', {
+                        to_name: "Sarvesh Dhar Dwivedi",
+                        project_name: projectData.title,
+                        message: "New website generated via Direct Command Prompt!"
+                    });
+
+                    setTimeout(() => {
+                        window.location.href = 'preview.html';
+                    }, 1200);
+                });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -140,4 +140,19 @@ function payForBusinessEmail(email, amount) {
     }
     // अगर वाल्ट में नहीं मिली, तो सिक्योर लाइव की चेक करेगा (बिना किसी हार्डकोडेड लीक के)
     return localStorage.getItem('siaa_live_secure_groq_key') || "";
-}
+}<style>
+    /* SIAA Professional Custom Modal Overlay */
+    #siaaCustomModal {
+        position: fixed; inset: 0; background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(8px);
+        display: flex; align-items: center; justify-content: center; z-index: 99999;
+        opacity: 0; pointer-events: none; transition: all 0.3s ease;
+    }
+    #siaaCustomModal.active { opacity: 1; pointer-events: auto; }
+    .siaa-modal-box {
+        background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(59, 130, 246, 0.4);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(59, 130, 246, 0.2);
+        border-radius: 1.5rem; padding: 2rem; max-width: 380px; width: 90%; text-align: center;
+        transform: scale(0.9); transition: transform 0.3s ease;
+    }
+    #siaaCustomModal.active .siaa-modal-box { transform: scale(1); }
+</style>
