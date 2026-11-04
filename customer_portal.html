@@ -1,0 +1,199 @@
+<!-- customer.html के अंदर फाइल मैनेजर के नीचे या साथ में यह ब्लॉक जोड़ें -->
+<div class="glass-panel p-8 rounded-3xl space-y-6 border border-slate-800 md:col-span-2">
+    <div class="text-xs font-bold uppercase tracking-widest text-amber-400 flex items-center justify-between">
+        <span>1-Click Software & App Installer</span>
+        <span class="text-[10px] text-amber-300">NVMe Instant Setup</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <i class="fa-brands fa-wordpress text-2xl text-blue-400"></i>
+                <div>
+                    <div class="text-xs font-bold text-white">WordPress CMS</div>
+                    <div class="text-[10px] text-slate-400">One-click blog & ecommerce setup</div>
+                </div>
+            </div>
+            <button onclick="installApp('WordPress')" class="px-3 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold">Install</button>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-bolt text-2xl text-purple-400"></i>
+                <div>
+                    <div class="text-xs font-bold text-white">SIAA AI Studio SPA</div>
+                    <div class="text-[10px] text-slate-400">Deploy autonomous 5-page site</div>
+                </div>
+            </div>
+            <button onclick="installApp('SIAA AI Website')" class="px-3 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold">Install</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function installApp(appName) {
+        alert(`⚙️ ${appName} को आपके NVMe स्टोरेज पर इंस्टॉल किया जा रहा है...\nकृपया 5 सेकंड प्रतीक्षा करें!`);
+        setTimeout(() => {
+            alert(`🎉 बधाई हो! ${appName} सफलतापूर्वक इंस्टॉल हो गया है! अब आप इसे मैनेज कर सकते हैं।`);
+        }, 1000);
+    }
+</script>
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIAA GALAXY — Customer Client Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
+        .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-effect { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="w-full border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-2xl sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="1000256664.png" alt="SIAA Logo" class="w-10 h-10 rounded-2xl object-cover border border-blue-500/30 glow-effect">
+                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA CLIENT PORTAL</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <a href="index.html" class="transition hover:text-white">Home</a>
+                <a href="hosting.html" class="transition hover:text-white">Hosting & Domains</a>
+                <a href="studio.html" class="transition hover:text-white">AI Web Studio ⚡</a>
+                <a href="portfolio.html" class="transition hover:text-white">Portfolio</a>
+                <a href="contact.html" class="transition hover:text-white">Support & CRM</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <span class="px-3 py-1.5 rounded-xl bg-emerald-950 border border-emerald-500/30 text-emerald-400 text-xs font-bold">● Active Client</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CLIENT DASHBOARD CONTENT -->
+    <main class="flex-grow max-w-6xl mx-auto px-6 py-12 w-full space-y-10">
+        
+        <!-- Welcome Banner -->
+        <div class="glass-panel p-8 rounded-3xl border border-blue-500/30 flex flex-col md:flex-row items-center justify-between gap-6 glow-effect">
+            <div class="space-y-2 text-center md:text-left">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Welcome Back</span>
+                <h1 class="text-2xl md:text-3xl font-black text-white">Client Management Hub</h1>
+                <p class="text-xs text-slate-400">Manage your active domains, NVMe cloud hosting, DNS settings, and file manager securely.</p>
+            </div>
+            <div class="flex space-x-3">
+                <a href="studio.html" class="px-5 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition shadow-lg">Launch Studio ⚡</a>
+                <a href="hosting.html" class="px-5 py-3 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-white font-bold text-xs transition">Upgrade Plan</a>
+            </div>
+        </div>
+
+        <!-- Grid Sections -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- 1. CUSTOM DOMAIN & DNS SETTINGS -->
+            <div class="glass-panel p-8 rounded-3xl space-y-6 border border-slate-800">
+                <div class="text-xs font-bold uppercase tracking-widest text-blue-400 flex items-center justify-between">
+                    <span>Custom Domain & DNS Records</span>
+                    <span class="text-[10px] text-emerald-400">● Connected</span>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-slate-300 mb-2">Connected Domain Name</label>
+                        <div class="flex space-x-2">
+                            <input type="text" id="customerDomainInput" placeholder="mybusiness.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500 font-mono">
+                            <button onclick="alert('Domain settings updated successfully!')" class="px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs cursor-pointer transition">Save</button>
+                        </div>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-2">
+                        <div class="text-[11px] font-bold text-slate-300">Required DNS Records:</div>
+                        <div class="grid grid-cols-3 gap-2 text-[10px] text-slate-400 border-b border-slate-800 pb-1 font-bold">
+                            <span>Type</span><span>Host</span><span>Target IP / Value</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-[10px] text-slate-300 font-mono">
+                            <span>A Record</span><span>@</span><span class="text-emerald-400">185.199.108.153</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 text-[10px] text-slate-300 font-mono">
+                            <span>CNAME</span><span>www</span><span class="text-emerald-400">siaagalaxy.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. CLIENT FILE MANAGER -->
+            <div class="glass-panel p-8 rounded-3xl space-y-6 border border-slate-800">
+                <div class="text-xs font-bold uppercase tracking-widest text-purple-400 flex items-center justify-between">
+                    <span>Website File Manager</span>
+                    <span class="text-[10px] text-purple-300">NVMe Cloud Storage</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-4 rounded-2xl bg-slate-950 border border-slate-800 text-xs font-mono space-y-3">
+                        <div class="flex justify-between items-center text-slate-300 border-b border-slate-800 pb-2">
+                            <span>📁 index.html (Main SPA)</span>
+                            <button onclick="alert('Opening code editor for index.html')" class="text-blue-400 hover:underline">Edit Code</button>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-300 border-b border-slate-800 pb-2">
+                            <span>📁 hosting.html</span>
+                            <button onclick="alert('Opening code editor for hosting.html')" class="text-blue-400 hover:underline">Edit Code</button>
+                        </div>
+                        <div class="flex justify-between items-center text-slate-300 pb-1">
+                            <span>📁 assets/logo.png</span>
+                            <button onclick="alert('Select new logo to replace')" class="text-blue-400 hover:underline">Replace</button>
+                        </div>
+                    </div>
+                    <label class="block w-full py-3 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-slate-200 text-xs font-bold text-center cursor-pointer transition">
+                        Upload New File <input type="file" class="hidden" onchange="alert('File uploaded successfully!')">
+                    </label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 3. SUPPORT TICKET SYSTEM -->
+        <div class="glass-panel p-8 rounded-3xl space-y-6 border border-slate-800 max-w-4xl mx-auto">
+            <div class="text-xs font-bold uppercase tracking-widest text-emerald-400">Raise Support Ticket & Technical Help</div>
+            <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs text-slate-300 mb-2">Subject / Issue Type</label>
+                        <input type="text" id="ticketSubject" placeholder="e.g., DNS Propagation or SSL Setup" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-emerald-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-300 mb-2">Priority Level</label>
+                        <select id="ticketPriority" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-emerald-500">
+                            <option>Normal (Response within 2 hours)</option>
+                            <option>Urgent / Server Down (Response within 15 mins)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-300 mb-2">Describe Your Issue</label>
+                    <textarea id="ticketDesc" rows="3" placeholder="Provide details about your technical request..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-white focus:outline-none focus:border-emerald-500"></textarea>
+                </div>
+                <button onclick="submitClientTicket()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs cursor-pointer transition shadow-lg shadow-emerald-600/30">Submit Support Ticket 🎫</button>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 glass-panel">
+        <p>&copy; 2026 SIAA GALAXY. Founded by Sarvesh Dhar Dwivedi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function submitClientTicket() {
+            const subject = document.getElementById('ticketSubject').value.trim();
+            if(!subject) { alert("कृपया टिकट का विषय (Subject) भरें!"); return; }
+            alert("✅ सपोर्ट टिकट सफलतापूर्वक जनरेट हो गया है! हमारी तकनीकी टीम जल्द ही आपसे संपर्क करेगी।");
+            document.getElementById('ticketSubject').value = '';
+            document.getElementById('ticketDesc').value = '';
+        }
+    </script>
+</body>
+</html>

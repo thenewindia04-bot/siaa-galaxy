@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — SIAA GALAXY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-effect { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white overflow-x-hidden">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="w-full border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-2xl sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="1000256664.png" alt="SIAA Logo" class="w-10 h-10 rounded-2xl object-cover border border-blue-500/30 glow-effect">
+                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA GALAXY</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <a href="index.html" class="transition hover:text-white">Home</a>
+                <a href="hosting.html" class="transition hover:text-white">Hosting & Domains</a>
+                <a href="studio.html" class="transition hover:text-white">AI Web Studio ⚡</a>
+                <a href="portfolio.html" class="text-blue-400 font-extrabold transition hover:text-white">Portfolio</a>
+                <a href="contact.html" class="transition hover:text-white">Support & CRM</a>
+                <a href="settings.html" class="text-purple-400 transition hover:text-white"><i class="fa-solid fa-gears mr-1"></i> Settings & DNS</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="settings.html" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-bold transition">Client Portal 🔐</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full space-y-10">
+        <div class="text-center space-y-3">
+            <h1 class="text-3xl md:text-5xl font-black text-white">Portfolio & Live Projects</h1>
+            <p class="text-xs md:text-sm text-slate-400">Explore enterprise web applications and cloud portals successfully deployed by SIAA GALAXY.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-blue-500/50 transition group">
+                <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                    <i class="fa-solid fa-laptop-code text-5xl text-blue-500/30 group-hover:scale-110 transition duration-300"></i>
+                    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">Live Cloud</span>
+                </div>
+                <div class="p-6 space-y-3">
+                    <h3 class="text-base font-bold text-white">SIAA Computers & Electronics Portal</h3>
+                    <p class="text-xs text-slate-400">Full-stack multi-page tech repair and hardware sales platform hosted on high-speed NVMe servers.</p>
+                    <a href="studio.html" class="inline-flex items-center space-x-1 text-xs font-bold text-blue-400 hover:text-blue-300"><span>Test in Studio</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-indigo-500/50 transition group">
+                <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                    <i class="fa-solid fa-shield-dog text-5xl text-indigo-500/30 group-hover:scale-110 transition duration-300"></i>
+                    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">Live Cloud</span>
+                </div>
+                <div class="p-6 space-y-3">
+                    <h3 class="text-base font-bold text-white">SIAA Labour & Security Services</h3>
+                    <p class="text-xs text-slate-400">Enterprise security agency portal equipped with instant CRM lead capture and client verification forms[span_3](start_span)[span_3](end_span).</p>
+                    <a href="studio.html" class="inline-flex items-center space-x-1 text-xs font-bold text-blue-400 hover:text-blue-300"><span>Test in Studio</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+
+            <div class="glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-purple-500/50 transition group">
+                <div class="h-48 bg-slate-900 relative overflow-hidden flex items-center justify-center">
+                    <i class="fa-solid fa-globe text-5xl text-purple-500/30 group-hover:scale-110 transition duration-300"></i>
+                    <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold border border-emerald-500/30">Live Cloud</span>
+                </div>
+                <div class="p-6 space-y-3">
+                    <h3 class="text-base font-bold text-white">SIAA Galaxy Website Builder Platform</h3>
+                    <p class="text-xs text-slate-400">Autonomous SaaS platform allowing users to generate enterprise-grade websites in seconds.</p>
+                    <a href="studio.html" class="inline-flex items-center space-x-1 text-xs font-bold text-blue-400 hover:text-blue-300"><span>Test in Studio</span> <i class="fa-solid fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 glass-panel">
+        <p>&copy; 2026 SIAA GALAXY. Founded by Sarvesh Dhar Dwivedi. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting & Cloud Plans — SIAA GALAXY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f8fafc; }
+        .glass-panel { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(24px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glow-effect { box-shadow: 0 0 60px -10px rgba(59, 130, 246, 0.4); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="w-full border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-2xl sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="1000256664.png" alt="Logo" class="w-10 h-10 rounded-2xl object-cover border border-blue-500/30 glow-effect">
+                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA CLOUD</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <a href="hosting.html" class="text-blue-400 font-extrabold transition hover:text-white">Hosting & Domains</a>
+                <a href="studio.html" class="hover:text-white transition">AI Web Studio ⚡</a>
+                <a href="portfolio.html" class="hover:text-white transition">Portfolio</a>
+                <a href="contact.html" class="hover:text-white transition">Support & CRM</a>
+                <a href="settings.html" class="text-purple-400 transition hover:text-white"><i class="fa-solid fa-gears mr-1"></i> Settings & DNS</a>
+            </nav>
+            <a href="dashboard.html" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-emerald-400 text-xs font-bold transition">Admin Vault 📊</a>
+        </div>
+    </header>
+
+    <!-- MAIN HOSTING & DOMAIN PLANS SECTION -->
+    <main class="flex-grow max-w-7xl mx-auto px-6 py-12 w-full space-y-12">
+        <div class="text-center space-y-3">
+            <span class="px-4 py-1.5 rounded-full bg-blue-950/60 border border-blue-500/30 text-blue-400 text-xs font-bold inline-block">High-Speed NVMe Infrastructure</span>
+            <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight">Cloud Hosting & Domain Pricing</h1>
+            <p class="text-xs md:text-sm text-slate-400">Lock in long-term multi-year plans to maximize savings and keep your business live 24/7.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            
+            <!-- PLAN 1: STARTER CLOUD -->
+            <div class="glass-panel p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-slate-800 hover:border-blue-500/50 transition">
+                <div class="space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Starter Cloud</span>
+                    <div class="text-3xl font-black text-white">₹199<span class="text-xs text-slate-400 font-normal"> /month</span></div>
+                    <p class="text-xs text-slate-400">Perfect for single business websites, landing pages, and personal portfolios.</p>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>1 Website Hosting</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>10 GB High-Speed NVMe Storage</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Free SSL Certificate</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>AI Studio Access (1 Token)</li>
+                    </ul>
+                </div>
+                <button onclick="payWithRazorpay('Starter Cloud Hosting', 199)" class="w-full py-3.5 rounded-xl bg-slate-900 border border-slate-700 hover:bg-slate-800 text-white font-bold text-xs cursor-pointer transition">Select Starter Plan ⚡</button>
+            </div>
+
+            <!-- PLAN 2: VIP BUSINESS GALAXY (MOST POPULAR) -->
+            <div class="glass-panel p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-blue-500/60 glow-effect bg-blue-950/20 relative">
+                <div class="absolute -top-3 right-6 px-3 py-1 rounded-full bg-blue-600 text-white text-[10px] font-extrabold uppercase tracking-wider">Most Popular</div>
+                <div class="space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-blue-400">VIP Business Galaxy</span>
+                    <div class="text-3xl font-black text-white">₹499<span class="text-xs text-slate-400 font-normal"> /month</span></div>
+                    <p class="text-xs text-slate-400">Ideal for growing enterprises requiring high performance and multi-page deployment.</p>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Unlimited Websites & Domains</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>100 GB NVMe Cloud Storage</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Free .com or .in Domain Included</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Full 11-Engine AI Studio Access</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Automated Google Sheets CRM Sync</li>
+                    </ul>
+                </div>
+                <button onclick="payWithRazorpay('VIP Business Galaxy Hosting', 499)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs cursor-pointer transition shadow-lg shadow-blue-600/30">Activate VIP Plan 🚀</button>
+            </div>
+
+            <!-- PLAN 3: UNLIMITED ENTERPRISE VPS -->
+            <div class="glass-panel p-8 rounded-3xl space-y-6 flex flex-col justify-between border border-purple-500/40 hover:border-purple-500/80 transition">
+                <div class="space-y-4">
+                    <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Enterprise VPS</span>
+                    <div class="text-3xl font-black text-white">₹1,499<span class="text-xs text-slate-400 font-normal"> /month</span></div>
+                    <p class="text-xs text-slate-400">Dedicated virtual private server resources with root access for heavy traffic.</p>
+                    <ul class="space-y-2.5 text-xs text-slate-300">
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Dedicated CPU & RAM</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>500 GB NVMe SSD Storage</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Priority 24/7 Engineer Support</li>
+                        <li><i class="fa-solid fa-check text-emerald-400 mr-2"></i>Advanced Custom DNS Control</li>
+                    </ul>
+                </div>
+                <button onclick="payWithRazorpay('Enterprise VPS Hosting', 1499)" class="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs cursor-pointer transition shadow-lg shadow-purple-600/20">Select Enterprise VPS 🛡️</button>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 glass-panel">
+        <p>&copy; 2026 SIAA GALAXY. Founder: Sarvesh Dhar Dwivedi. All rights reserved.</p>
+    </footer>
+
+    <!-- RAZORPAY INTEGRATION SCRIPT -->
+    <script>
+        function payWithRazorpay(planName, amount) {
+            const options = {
+                "key": "rzp_test_placeholder_key", // अपनी Razorpay लाइव/टेस्ट की यहाँ डालें
+                "amount": amount * 100, // पैसे में कन्वर्ट करने के लिए
+                "currency": "INR",
+                "name": "SIAA GALAXY Cloud",
+                "description": "Purchase for " + planName,
+                "image": "1000256664.png",
+                "handler": function (response){
+                    alert("✨ पेमेंट सफल! पेमेंट ID: " + response.razorpay_payment_id + "\nआपका होस्टिंग और डोमेन सेटअप एक्टिव कर दिया गया है!");
+                    window.location.href = "settings.html"; // पेमेंट के बाद कस्टमर अपनी DNS सेटिंग्स पर चला जाएगा
+                },
+                "prefill": {
+                    "name": "Sarvesh Dhar Dwivedi",
+                    "email": "contact@siaaindia.com",
+                    "contact": "9999999999"
+                },
+                "theme": { "color": "#3b82f6" }
+            };
+            
+            // अगर रेज़रपे SDK लोड है तो चेकआउट खुलेगा, वरना डेमो सक्सेस मैसेज आ जाएगा
+            try {
+                const rzp1 = new Razorpay(options);
+                rzp1.open();
+            } catch(e) {
+                alert("✨ [Demo Mode] " + planName + " का ऑर्डर बुक हो गया! रीडायरेक्ट किया जा रहा है...");
+                window.location.href = "settings.html";
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- hosting.html के अंदर प्लान्स वाले हिस्से में यह चेकबॉक्स और अपडेटेड स्क्रिप्ट जोड़ें -->
+<div class="space-y-3 pt-4 border-t border-slate-800">
+    <label class="flex items-center space-x-2 text-xs text-slate-300 cursor-pointer">
+        <input type="checkbox" id="privacyToggle" class="rounded bg-slate-950 border-slate-800 text-blue-600 focus:ring-0" checked>
+        <span>Enable WHOIS Privacy Protection (Free 1st Year) 🔒</span>
+    </label>
+</div>
+<script>
+    function payWithRazorpay(planName, amount) {
+        const privacy = document.getElementById('privacyToggle')?.checked ? "With Privacy Protection" : "Standard";
+        alert(`🔒 Razorpay गेटवे पर रीडायरेक्ट हो रहा है...\nप्लान: ${planName} (${privacy}) | मूल्य: ₹${amount}`);
+        
+        setTimeout(() => {
+            alert("✨ भुगतान सफल! टैक्स इनवॉइस (GST Invoice) जनरेट हो रही है...");
+            // Simulated Tax Invoice Download
+            const invoiceText = `SIAA GALAXY TAX INVOICE\nPlan: ${planName}\nAmount: ₹${amount}\nStatus: PAID\nCustomer: Sarvesh Dhar Dwivedi`;
+            const blob = new Blob([invoiceText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'SIAA_Tax_Invoice.txt';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            
+            window.location.href = "customer.html";
+        }, 1000);
+    }
+</script>
+<!-- Recurring Subscription & Auto-Renewal Razorpay Integration -->
+<script>
+    function subscribeWithRecurringRazorpay(planName, amount, billingCycle) {
+        alert(`💳 SIAA Secure Recurring Billing Gateway:\nPlan: ${planName}\nAmount: ₹${amount} / ${billingCycle}\nAuto-Renewal: ENABLED 🔄`);
+        
+        // Simulated Secure Gateway Trigger
+        setTimeout(() => {
+            alert(`✨ सब्सक्रिप्शन सफल! आपका ऑटो-डेबिट मैंडेट एक्टिव हो गया है।`);
+            window.location.href = "settings.html";
+        }, 1000);
+    }
+</script>

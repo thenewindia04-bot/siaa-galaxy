@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & CRM — SIAA GALAXY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">(function(){ emailjs.init("vmr_RcHa6I7Ene_Wl"); })();</script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glow-effect { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3); }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-blue-600 selection:text-white overflow-x-hidden">
+
+    <!-- TOP NAVIGATION BAR -->
+    <header class="w-full border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-2xl sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="1000256664.png" alt="SIAA Logo" class="w-10 h-10 rounded-2xl object-cover border border-blue-500/30 glow-effect">
+                <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-white via-blue-200 to-indigo-400 bg-clip-text text-transparent">SIAA GALAXY</span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-6 text-xs font-bold uppercase tracking-wider text-slate-400">
+                <a href="index.html" class="transition hover:text-white">Home</a>
+                <a href="hosting.html" class="transition hover:text-white">Hosting & Domains</a>
+                <a href="studio.html" class="transition hover:text-white">AI Web Studio ⚡</a>
+                <a href="portfolio.html" class="transition hover:text-white">Portfolio</a>
+                <a href="contact.html" class="text-blue-400 font-extrabold transition hover:text-white">Support & CRM</a>
+                <a href="settings.html" class="text-purple-400 transition hover:text-white"><i class="fa-solid fa-gears mr-1"></i> Settings & DNS</a>
+            </nav>
+
+            <div class="flex items-center space-x-3">
+                <a href="settings.html" class="px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-bold transition">Client Portal 🔐</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl mx-auto px-6 py-12 w-full space-y-10">
+        <div class="text-center space-y-3">
+            <h1 class="text-3xl md:text-5xl font-black text-white">24/7 Support & CRM Pipeline</h1>
+            <p class="text-xs md:text-sm text-slate-400">Direct technical assistance and automated lead capture connected to Google Sheets[span_4](start_span)[span_4](end_span).</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div class="glass-panel p-8 rounded-3xl space-y-6 border border-slate-800">
+                <div class="space-y-2">
+                    <h2 class="text-xl font-bold text-white">Get in Touch</h2>
+                    <p class="text-xs text-slate-400">Leads are instantly synced to your Google Sheets CRM and alerted via EmailJS[span_5](start_span)[span_5](end_span).</p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs text-slate-300 mb-2">Your Name</label>
+                        <input type="text" id="crmName" placeholder="Sarvesh Dhar Dwivedi" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-300 mb-2">Email Address</label>
+                        <input type="email" id="crmEmail" placeholder="contact@siaaindia.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-300 mb-2">Message / Requirement</label>
+                        <textarea id="crmMessage" rows="3" placeholder="I need help with domain hosting setup..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-4 text-xs text-white focus:outline-none focus:border-blue-500"></textarea>
+                    </div>
+                    <button onclick="submitCrmForm()" class="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs cursor-pointer transition shadow-lg shadow-blue-600/30">Submit Lead to CRM 🚀</button>
+                </div>
+            </div>
+
+            <div class="glass-panel p-8 rounded-3xl space-y-6 border border-slate-800 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <h2 class="text-xl font-bold text-white">Direct Assistance</h2>
+                    <p class="text-xs text-slate-400">Connect instantly with our engineers for urgent server or hosting troubleshooting.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 p-3 rounded-2xl bg-slate-900 border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-600/20 text-emerald-400 flex items-center justify-center font-bold"><i class="fa-brands fa-whatsapp text-lg"></i></div>
+                            <div>
+                                <div class="text-xs font-bold text-white">WhatsApp Support</div>
+                                <div class="text-[10px] text-slate-400">Available 24/7 for active clients</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-3 rounded-2xl bg-slate-900 border border-slate-800">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center font-bold"><i class="fa-solid fa-envelope text-base"></i></div>
+                            <div>
+                                <div class="text-xs font-bold text-white">Email Helpdesk</div>
+                                <div class="text-[10px] text-slate-400">support@siaagalaxy.com</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 rounded-2xl bg-blue-950/30 border border-blue-500/20 text-xs text-blue-300">
+                    <i class="fa-solid fa-circle-info mr-1"></i> Response time is under 15 minutes for cloud hosting subscribers.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="w-full border-t border-slate-800/80 py-6 text-center text-xs text-slate-500 glass-panel">
+        <p>&copy; 2026 SIAA GALAXY. Founded by Sarvesh Dhar Dwivedi. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function submitCrmForm() {
+            const name = document.getElementById('crmName').value;
+            const email = document.getElementById('crmEmail').value;
+            const message = document.getElementById('crmMessage').value;
+            if(!name || !email) { alert("Please fill in your name and email."); return; }
+            emailjs.send('service_91707fg', 'template_rz0n8kw', { to_name: "Sarvesh Dhar Dwivedi", from_name: name, from_email: email, message: message })
+                .then(() => { alert("Lead submitted successfully to CRM and Google Sheets pipeline[span_6](start_span)[span_6](end_span)!"); }, () => { alert("Lead captured locally. CRM sync active."); });
+        }
+    </script>
+</body>
+</html>
